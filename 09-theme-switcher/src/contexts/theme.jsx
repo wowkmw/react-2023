@@ -1,6 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+
+const rootThemeId = "rootHtml";
 
 const ThemeContext = createContext({
   themeMode: "light",
@@ -20,6 +22,11 @@ const ThemeContextProvider = ({ children }) => {
     setThemeMode("light");
   };
 
+  useEffect(() => {
+    document.getElementById(rootThemeId).classList.remove("dark", "light");
+    document.getElementById(rootThemeId).classList.add(themeMode);
+  }, [themeMode]);
+
   return (
     <ThemeContext.Provider value={{ themeMode, darkTheme, lightTheme }}>
       {children}
@@ -31,4 +38,4 @@ const useTheme = () => {
   return useContext(ThemeContext);
 };
 
-export { ThemeContextProvider, useTheme };
+export { ThemeContextProvider, useTheme, rootThemeId };
