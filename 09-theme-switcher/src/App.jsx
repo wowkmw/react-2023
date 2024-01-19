@@ -1,10 +1,12 @@
 import Card from "./components/Card";
 import ThemeBtn from "./components/ThemeBtn";
-import { rootThemeId } from "./contexts/theme";
+import { useTheme } from "./contexts/theme";
 
 function App() {
+  const { themeMode } = useTheme();
+
   return (
-    <div className="flex flex-wrap min-h-screen items-center" id={rootThemeId}>
+    <div className={`flex flex-wrap min-h-screen items-center ${themeMode}`}>
       <div className="w-full">
         <div className="w-full max-w-sm mx-auto flex justify-end mb-4">
           <ThemeBtn />
