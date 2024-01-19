@@ -1,8 +1,8 @@
-import { useContext, useEffect } from "react";
-import UserContext from "../context/UserContext";
+import { useEffect } from "react";
+import { useUserContext } from "../context/userContext";
 
 const Profile = () => {
-  const { user } = useContext(UserContext);
+  const { user } = useUserContext();
   useEffect(() => {
     console.log(user);
   }, [user]);
